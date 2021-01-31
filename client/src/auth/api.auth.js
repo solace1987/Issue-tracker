@@ -2,7 +2,7 @@ const signin = async (user) => {
 
     try {
 
-        let response = await fetch('/auth/signin/', {
+        let response = await fetch('http://localhost:3200/auth/signin', {
 
             method: 'POST',
 
@@ -13,13 +13,13 @@ const signin = async (user) => {
                 'Content-Type': 'application/json'
 
             },
-
+            
             credentials: 'include',
 
             body: JSON.stringify(user)
 
         })
-
+       
         return await response.json()
 
     } catch (err) {

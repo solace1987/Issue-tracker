@@ -13,7 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(compress())
 app.use(helmet())
-app.use(cors())
+app.use(cors( {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200,
+    credentials : true
+    }))
 
 app.use('/', userRoutes)
 app.use('/', authRoutes)
@@ -21,4 +25,5 @@ app.use('/', authRoutes)
 
 
 
+//
 export default app

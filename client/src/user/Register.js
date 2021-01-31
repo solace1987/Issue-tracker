@@ -37,7 +37,7 @@ function UserReg() {
 
 
       } else {
-
+        console.log(data)
         setRedirect("New Account Created")
 
       }

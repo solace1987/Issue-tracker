@@ -3,7 +3,7 @@ import Home from './Home';
 import Register from './user/Register'
 import Login from './user/Login'
 import created from './notification/Newacct'
-import Dtable from './dashbaord/table'
+import userDash from './dashbaord/userDash'
 function App() {
 
   return (
@@ -12,7 +12,7 @@ function App() {
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/new-account" component={created} />
-      <Route path="/dashboard" component={Dtable} />
+      <Route path="/dashboard" component={userDash} />
     </Switch>
   );
    

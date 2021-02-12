@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import Home from './Home';
+import Home from './Home/Home';
 import Register from './user/Register'
 import Login from './user/Login'
 import created from './notification/Newacct'

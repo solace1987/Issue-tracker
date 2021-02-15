@@ -4,7 +4,7 @@ function TableHeader({headings}){
             <tr>
             {
                 headings.map(heading=>{
-                    return <th className="border text-center border-green-50">{heading}</th>
+                    return <th className="border text-center border-grey-500 p-2">{heading}</th>
                 })
             }
             </tr>

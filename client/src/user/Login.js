@@ -1,5 +1,6 @@
 import { signin } from './../auth/api.auth'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function Login() {
   const [values, setValues] = useState({
@@ -7,7 +8,7 @@ function Login() {
     email: '',
     error: ''
   })
- 
+ const [redirect,setRedirect]=useState(null)
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value })
     
@@ -30,13 +31,24 @@ function Login() {
 
       } else {
         localStorage.setItem('token', data.token);
-        console.log(localStorage.getItem('token'))
+       setRedirect('true')
         
 
       }
 
     })
   }
+
+  if(redirect){
+    return(
+      
+      <Redirect
+      to={{ pathname: "/dashboard" }}
+      />
+    )
+  }
+
+  else{
     return (
       <div  className="report issue-login bg-blue-400 grid grid-cols-1 w-full h-ful">
           
@@ -53,7 +65,7 @@ function Login() {
        
          
       </div>
-    );
+    );}
   }
   
   export default Login;

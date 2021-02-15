@@ -1,7 +1,7 @@
 
 
 
-function Sidebar() {
+function Sidebar(props) {
     const items =
         [{
             name: 'Incident',
@@ -39,13 +39,13 @@ function Sidebar() {
         ]
 
     return (
-        <ul class="space-y-2 text-sm">
+        <ul class="space-y-2 text-sm pl-4 ">
             { items.map(_item => {
                 return (
-                    <li>
+                    <li onClick={()=>props.onAction(_item.name+ ' Management')}>
                         <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 mt-4 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                             <span class="text-gray-600">
-                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={_item.image} />
                                 </svg>
                             </span>

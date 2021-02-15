@@ -1,11 +1,11 @@
 import Header from './TableHeader';
 import Row from './Tablerow';
 
-function UserTable(){
+function UserTable(props){
     return (
-        <table className='table-auto w-9/12 border m-6 center  bg-white'>
+        <table className='table-auto rounded-md text-gray-700 w-12/12 border ml-2 m-1 center  bg-white rounded-lg'>
             <Header headings={["No.","User", "Dept", "Main Issue","Time","Root Cause ","Resolution","Status"]}></Header>
-            <Row/>
+            <Row incidents={props.incidents} />
         </table>
         
     )

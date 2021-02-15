@@ -4,6 +4,7 @@ import Register from './user/Register'
 import Login from './user/Login'
 import created from './notification/Newacct'
 import Dashboard from './dashbaord/Dashboard'
+import IncidentForm from './Incident/IncidentForm'
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/new-account" component={created} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/incident-form" component={IncidentForm} />
     </Switch>
   );
    

@@ -2,19 +2,20 @@
 function Tablerow({ incidents }) {
 
      let rowData = (incident, index) => {
-         let date=new Date(incident.timeReported).toDateString()
+
+         let date=new Date(incident.timeReported)
+         let formattedDate=date.toDateString()+ "- "+date.toLocaleTimeString();
          console.log(date)
          if(!incident){
              return;
          }
-
         return (
             <tr className='text-xs'>
                 <td  className="border border-grey-500 px-2">{index}</td>
                 <td  className="border border-grey-50 px-2 ">{incident.user}</td>
                 <td  className="border px-2">{incident.dept}</td>
                 <td  className="border border-grey-500 px-2 w-1/5">{incident.issue}</td>
-                <td  className="border border-grey-500 px-2 w-1/12">{date}</td>
+                <td  className="border border-grey-500 px-2 w-1/12">{formattedDate}</td>
                 <td  className="border border-grey-500 px-2 w-1/5">{incident.cause}</td>
                 <td  className="border border-grey-500 px-2 w-1/5">{incident.resolution}</td>
                 <td  className="border border-grey-500 px-2 w-1/12">{incident.status}</td>

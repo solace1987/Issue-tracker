@@ -1,7 +1,52 @@
 import {Link} from 'react-router-dom';
-
+import React, { useState } from 'react';
+import {create} from './../incidence/api.incident'
 
 function Home() {
+
+  const [values, setValues] = useState({
+    user: '',
+    issue: '',
+    dept: '',
+    status:'Open',
+    email:'',
+  
+  })
+  
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value })
+    
+  }
+  
+  const clickSubmit = (e) => {
+    e.preventDefault()
+    const incident = {
+      
+        user: values.user||undefined,
+        issue: values.issue||undefined,
+        dept:values.dept||undefined,
+        email:values.email||undefined
+        
+    }
+  
+    console.log(incident)
+  
+    create(incident).then((data) => {
+    
+      if (data.error) {
+  
+        setValues({ ...values, error: data.error })
+
+        
+  
+      } else {
+        
+        setValues({})
+  
+      }
+  
+    })
+  }
     return (
       
          <div className=" issue-login flex">
@@ -24,10 +69,11 @@ function Home() {
             </div>
               <form className="font-sans flex flex-col items-center mt-2 w-full ">
               
-              <input  placeholder="Name" className="text-sm text-gray-500 shadow-md w-5/12 border rounded-md border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400" name='name' type="text"/>
-              <input  placeholder="Email Address (Office Email)" className=" text-sm text-gray-500 max-w-md w-5/12 border rounded-md border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400 " type="email"/>
-              <textarea placeholder="What issue are you Experiencing?" className=" text-sm text-gray-500 max-w-md w-5/12 max-h-md h-48 border rounded-sm border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400 " name="issue" type="text" />
-              <input value="Submit" className=' font-semibold text-white bg-green-500 w-28 h-10 rounded-md mt-6 border-gray-400 focus:ring-2 focus:ring-blue-400 '  type="submit"/>
+              <input onChange={handleChange('user')} placeholder="user" className="text-sm text-gray-500 shadow-md w-5/12 border rounded-md border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400" name='name' type="text"/>
+              <input onChange={handleChange('email')}  placeholder="email" className=" text-sm text-gray-500 max-w-md w-5/12 border rounded-md border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400 " type="email"/>
+              <input onChange={handleChange('dept')} placeholder="Department" className="text-sm text-gray-500 shadow-md w-5/12 border rounded-md border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400" name='dept' type="text"/>
+              <textarea onChange={handleChange('issue')} placeholder="What issue are you Experiencing?" className=" text-sm text-gray-500 max-w-md w-5/12 max-h-md h-48 border rounded-sm border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400 " name="issue" type="text" />
+              <input value="Submit" onClick={clickSubmit} className=' font-semibold text-white bg-green-500 w-28 h-10 rounded-md mt-6 border-gray-400 focus:ring-2 focus:ring-blue-400 '  type="submit"/>
   
              </form>
              {/* </div> */}

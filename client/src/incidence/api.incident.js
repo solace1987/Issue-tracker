@@ -2,7 +2,7 @@ const create = async (incident) => {
 
     try {
 
-        let response = await fetch('http://localhost:3200/api/incident/', {
+        let response = await fetch('http://localhost:3200/api/incidents/', {
 
             method: 'POST',
 

@@ -10,6 +10,10 @@ const IncidentSchema = new mongoose.Schema({
         trim: true,
       
     },
+    email:{
+        type:String,
+        trim:true,
+    },
 
     issue: {
         type: String,

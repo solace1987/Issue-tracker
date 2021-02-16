@@ -9,7 +9,7 @@ import errorHandler from './../helpers/dbErrorHandler'
 const create = async (req, res) => {
 
     const incident = new Incident(req.body)
-
+  
     try {
 
         await incident.save()
@@ -84,7 +84,7 @@ const list = async (req, res) => {
 
     try {
 
-        let incident = await Incident.find().select('incident dept issue timeReported cause status')
+        let incident = await Incident.find().select('user incident dept issue timeReported cause status')
 
         res.json(incident)
 

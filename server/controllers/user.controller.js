@@ -7,7 +7,7 @@ import errorHandler from './../helpers/dbErrorHandler';
 const create = async (req, res) => {
 
     const user = new User(req.body)
-
+    console.log(user)
     try {
 
         await user.save()

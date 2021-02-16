@@ -20,6 +20,7 @@ function UserReg() {
 
   const clickSubmit = (e) => {
     e.preventDefault()
+    
     const user = {
       role:'User',
       name: values.name || undefined,
@@ -28,7 +29,7 @@ function UserReg() {
       password: values.password || undefined
 
     }
-
+    console.log(user)
     create(user).then((data) => {
      
       if (data.error) {

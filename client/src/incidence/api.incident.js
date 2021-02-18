@@ -30,11 +30,11 @@ const create = async (incident) => {
 
 
 
-const list = async (signal) => {
+const list = async (signal,query) => {
 
     try {
 
-        let response = await fetch('http://localhost:3200/api/incidents', {
+        let response = await fetch(`http://localhost:3200/api/incidents?email=${query}`, {
 
             method: 'GET',
 

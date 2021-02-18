@@ -81,10 +81,11 @@ const read = (req, res) => {
 
 
 const list = async (req, res) => {
-
+const query= req.query;
     try {
+        
 
-        let incident = await Incident.find().select('user incident dept issue timeReported cause status')
+        let incident = await Incident.find(query).select('user incident dept issue timeReported cause status')
 
         res.json(incident)
 

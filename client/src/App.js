@@ -5,6 +5,8 @@ import Login from './user/Login'
 import created from './notification/Newacct'
 import Dashboard from './dashbaord/Dashboard'
 import IncidentForm from './Incident/IncidentForm'
+import React from 'react'
+
 function App() {
 
   return (
@@ -13,7 +15,7 @@ function App() {
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/new-account" component={created} />
-      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/dashboard" render={(props)=><Dashboard {...props}/>} />
       <Route path="/incident-form" component={IncidentForm} />
     </Switch>
   );

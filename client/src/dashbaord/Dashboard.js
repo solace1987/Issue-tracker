@@ -7,8 +7,9 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
 
-function Dashboard() {
-    
+function Dashboard(props) {
+    const userData=props.location.state
+  
     const [value, setValue] = useState({ data: [] })
     let history=useHistory();
 
@@ -17,7 +18,7 @@ function Dashboard() {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        list(signal).then((data) => {
+        list(signal,userData.email).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
             } else {

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 function Login() {
+let userData={};
   const [values, setValues] = useState({
     password: '',
     email: '',
@@ -23,7 +24,7 @@ function Login() {
     }
 
     signin(user).then((data) => {
-     console.log(user)
+    
       if (data.error) {
 
         setValues({ ...values, error: data.error })
@@ -31,7 +32,9 @@ function Login() {
 
       } else {
         localStorage.setItem('token', data.token);
-       setRedirect('true')
+        userData=data.user;
+        
+       setRedirect(data.user)
         
 
       }
@@ -43,7 +46,11 @@ function Login() {
     return(
       
       <Redirect
-      to={{ pathname: "/dashboard" }}
+      to={{ pathname: "/dashboard" ,
+    
+      state: redirect
+    }}
+      
       />
     )
   }

@@ -1,5 +1,5 @@
 const create = async (user) => {
-    console.log(user)
+    
     try {
 
         let response = await fetch('http://localhost:3200/api/users/', {

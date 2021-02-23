@@ -5,8 +5,7 @@ function Tablerow({ incidents }) {
 
          let date=new Date(incident.timeReported)
          let formattedDate=date.toDateString()+ "- "+date.toLocaleTimeString();
-         console.log(date)
-         if(!incident){
+          if(!incident){
              return;
          }
         return (

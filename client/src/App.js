@@ -4,7 +4,7 @@ import Register from './user/Register'
 import Login from './user/Login'
 import created from './notification/Newacct'
 import Dashboard from './dashbaord/Dashboard'
-import IncidentForm from './Incident/IncidentForm'
+import IncidentForm from './incidence/Incident/IncidentForm'
 import React from 'react'
 
 function App() {

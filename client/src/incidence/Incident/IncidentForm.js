@@ -1,16 +1,18 @@
-import {create} from './../incidence/api.incident'
+import {create} from '../api.incident'
 import React, { useState } from 'react';
+import {localFetch} from '../../helper/localStorage'
 
 
 
 function IncidentForm() {
+  const userData= localFetch('user')
 
     const [values, setValues] = useState({
-        user: 'Shola',
+        user: userData.name,
         issue: '',
         resolution: '',
-        email:'oluwasholaogundipe@globalplusonline.com',
-        dept: 'ICT',
+        email:userData.email,
+        dept: userData.department,
         timeReported:Date.now(),
         status:'',
         cause:''
@@ -31,7 +33,9 @@ function IncidentForm() {
             resolution: values.resolution||undefined,
             dept:values.dept||undefined,
             status:values.status||undefined,
-            cause:values.cause||undefined
+            cause:values.cause||undefined,
+            email:values.email||undefined,
+            dept:values.dept||undefined
         }
 
         console.log(incident)

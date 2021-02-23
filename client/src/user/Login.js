@@ -1,9 +1,10 @@
 import { signin } from './../auth/api.auth'
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import {localSave} from './../helper/localStorage'
 
 function Login() {
-let userData={};
+
   const [values, setValues] = useState({
     password: '',
     email: '',
@@ -31,11 +32,9 @@ let userData={};
 
 
       } else {
-        localStorage.setItem('token', data.token);
-        userData=data.user;
-        
-       setRedirect(data.user)
-        
+       localSave("token",data.token);
+       localSave("user",data.user);           
+       setRedirect(true);      
 
       }
 
@@ -48,8 +47,7 @@ let userData={};
       <Redirect
       to={{ pathname: "/dashboard" ,
     
-      state: redirect
-    }}
+      }}
       
       />
     )

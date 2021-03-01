@@ -40,9 +40,9 @@ function Sidebar(props) {
 
     return (
         <ul class="space-y-2 text-sm pl-4 ">
-            { items.map(_item => {
+            { items.map((_item, index) => {
                 return (
-                    <li onClick={()=>props.onAction(_item.name+ ' Management')}>
+                    <li onClick={() => props.onAction(_item.name)} key={index}>
                         <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 mt-4 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                             <span class="text-gray-600">
                                 <svg class="h-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

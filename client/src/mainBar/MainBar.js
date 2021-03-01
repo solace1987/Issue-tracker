@@ -1,8 +1,9 @@
 import Table from './../dashbaord/Table/Usertable'
 import Tile from './../dashbaord/dashTile/Tile'
+import Welcome from './../welcome/welcome'
 
 function MainBar(props){
-    if(props.name==='incidence'){
+    if(props.title==='Incident'){
         return(
 
             <div className='flex flex-col w-10/12 overflow-y-auto '>
@@ -13,6 +14,12 @@ function MainBar(props){
                     </div>
                     <Table incidents={props.data} className='w-full' />
                 </div>
+        )
+    }
+
+    else if(props.title===null){
+        return(
+        <Welcome name={props.name}/>
         )
     }
 }

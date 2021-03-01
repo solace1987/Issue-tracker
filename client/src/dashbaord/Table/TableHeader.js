@@ -3,8 +3,8 @@ function TableHeader({headings}){
         <thead>
             <tr>
             {
-                headings.map(heading=>{
-                    return <th className="border text-center border-grey-500 p-2">{heading}</th>
+                headings.map((heading, index)=>{
+                    return <th className="border text-center border-grey-500 p-2" key={index}>{heading}</th>
                 })
             }
             </tr>

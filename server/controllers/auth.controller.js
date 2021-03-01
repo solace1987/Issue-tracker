@@ -62,7 +62,8 @@ const signin = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        department: user.department
+        department: user.department,
+        role:user.role
 
       }
 

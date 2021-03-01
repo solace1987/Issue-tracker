@@ -6,7 +6,7 @@ function Tile({ total, done, remaining, title }) {
                 <div className='flex-grow '>
                     <h2><span className='text-2xl tracking-tighter text-gray-200'>Total:</span> <span className='text-4xl'>{total}</span></h2>
                 </div>
-                <div className='flex-grow text-4xl'><h2><span className='text-2xl tracking-tighter text-gray-200'>Completed:</span> {done}</h2></div>
+                <div className='flex-grow text-4xl'><h2><span className='text-2xl tracking-tighter text-gray-200'>Resolved:</span> {done}</h2></div>
                 <div className='flex-grow text-4xl'><h2><span className='text-2xl tracking-tighter text-gray-200'>Remaining: </span>{remaining}</h2></div>
             </div>
         </div>

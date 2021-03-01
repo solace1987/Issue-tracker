@@ -85,7 +85,7 @@ const query= req.query;
     try {
         
 
-        let incident = await Incident.find(query).select('user incident dept issue timeReported cause status')
+        let incident = await Incident.find(query).select('user incident dept issue timeReported role cause status')
 
         res.json(incident)
 

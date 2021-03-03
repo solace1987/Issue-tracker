@@ -1,13 +1,16 @@
-import { create } from '../api.incident'
-import React, { useState } from 'react';
+import { create, read, update } from '../api.incident'
+import React, { useEffect, useState } from 'react';
 import { localFetch } from '../../helper/localStorage'
 
 
-
 function IncidentForm(props) {
+
   const type = props.location.state.isUpdate;
-  console.log(props)
+
   const userData = localFetch('user')
+
+  const jwt = localFetch('token');
+
 
   const [values, setValues] = useState({
     user: userData.name,
@@ -26,44 +29,70 @@ function IncidentForm(props) {
 
   }
 
-  const clickSubmit = (e) => {
-    
-    e.preventDefault()
-    if(type){
-      console.log('Updated, The incident is updating')
-  }
+  useEffect(() => {
+    const abortController = new AbortController()
+    const signal = abortController.signal
 
-else if(!type){
- 
-    e.preventDefault()
-    const incident = {
+    read({incidentId: props.match.params.incidentId}, { t: jwt }, signal).then((data) => {
+      if (data && data.error) {
+        setValues({ ...values, error: data.error })
+      } else {
+        setValues(data)
       
-        user: values.user||undefined,
-        issue: values.issue||undefined,
-        resolution: values.resolution||undefined,
-        dept:values.dept||undefined,
-        status:values.status||undefined,
-        cause:values.cause||undefined,
-        email:values.email||undefined,
-        dept:values.dept||undefined
+      }
+    })
+    return function cleanup() {
+      abortController.abort()
     }
 
-        create(incident).then((data) => {
+  },[props.match.params.incidentId])
+
+
+  const clickSubmit = (e) => {
+
+    if (type) {
+      e.preventDefault()
+      update({incidentId: props.match.params.incidentId},{t: jwt}, values).then((data) => {
+        if (data && data.error) {
+          setValues({...values, error: data.error})
+        } else {
+          console.log(data)
+        }
+      })
+    }
     
-      if (data.error) {
 
-        setValues({ ...values, error: data.error })
+    else if (!type) {
 
+      e.preventDefault()
+      const incident = {
 
-      } else {
-        
-        console.log(data)
-
+        user: values.user || undefined,
+        issue: values.issue || undefined,
+        resolution: values.resolution || undefined,
+        dept: values.dept || undefined,
+        status: values.status || undefined,
+        cause: values.cause || undefined,
+        email: values.email || undefined,
+        dept: values.dept || undefined
       }
 
-    })
+      create(incident).then((data) => {
+
+        if (data.error) {
+
+          setValues({ ...values, error: data.error })
+
+
+        } else {
+
+          console.log(data)
+
+        }
+
+      })
+    }
   }
-}
 
 
 

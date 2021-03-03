@@ -1,7 +1,8 @@
 import { localFetch } from './../../helper/localStorage';
-
+import { useHistory } from 'react-router-dom';
 function Tablerow({ incidents }) {
     const userRole = localFetch('user').role;
+    let history = useHistory();
     console.log(userRole)
     let rowEdit = (incidentId) => {
         if (userRole === 'Admin') {
@@ -15,10 +16,9 @@ function Tablerow({ incidents }) {
     const onRowClick = (id) => {
 
         history.push({
-            pathname: '/incident-form',
+            pathname: '/incident/'+id,
             state:{
                 isUpdate:true,
-                id:id
             }
         });
     }

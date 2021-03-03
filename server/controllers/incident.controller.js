@@ -36,14 +36,14 @@ const create = async (req, res) => {
 
 /**
 
- * Load user and append to req.
+ * Load incident and append to req.
 
  */
 
 const incidentByID = async (req, res, next, id) => {
-
+    
     try {
-
+        
         let incident = await Incident.findById(id)
 
         if (!incident)
@@ -73,7 +73,7 @@ const incidentByID = async (req, res, next, id) => {
 
 const read = (req, res) => {
 
-
+    
     return res.json(req.profile)
 
 }

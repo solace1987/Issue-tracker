@@ -15,8 +15,10 @@ function App() {
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/new-account" component={created} />
+      <Route path="/incident/:incidentId" component={IncidentForm}/>
       <Route path="/dashboard" render={(props)=><Dashboard {...props}/>} />
-      <Route path="/incident-form" component={IncidentForm} />
+      <Route path="/incident" component={IncidentForm} />
+      
     </Switch>
   );
    

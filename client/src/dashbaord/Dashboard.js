@@ -8,10 +8,12 @@ import MainBar from './../mainBar/MainBar'
 
 
 function Dashboard() {
-    const userData = localFetch("user");
-    const [value, setValue] = useState({ data: [], title: null })
-    let history = useHistory();
 
+    const userData = localFetch("user");
+
+    const [value, setValue] = useState({ data: [], title: null })
+
+    let history = useHistory();
 
     useEffect(() => {
         const abortController = new AbortController()
@@ -32,7 +34,7 @@ function Dashboard() {
 
     const createIncident = () => {
         history.push({
-            pathname: '/incident-form',
+            pathname: '/incident',
             state:{
                 isUpdate:false
             }

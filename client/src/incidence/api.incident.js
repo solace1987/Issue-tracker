@@ -58,7 +58,7 @@ const read = async (params, credentials, signal) => {
 
     try {
 
-        let response = await fetch('/api/incident/' + params.incidentId, {
+        let response = await fetch('http://localhost:3200/api/incidents/' + params.incidentId, {
 
             method: 'GET',
 
@@ -88,11 +88,11 @@ const read = async (params, credentials, signal) => {
 
 
 
-const update = async (params, credentials, user) => {
-
+const update = async (params, credentials, incident) => {
+    
     try {
 
-        let response = await fetch('/api/incident/' + params.userId, {
+        let response = await fetch('http://localhost:3200/api/incidents/' + params.incidentId, {
 
             method: 'PUT',
 
@@ -105,11 +105,11 @@ const update = async (params, credentials, user) => {
                 'Authorization': 'Bearer ' + credentials.t
 
             },
-
-            body: JSON.stringify(user)
+                
+            body: JSON.stringify(incident)
 
         })
-
+     
         return await response.json()
 
     } catch (err) {

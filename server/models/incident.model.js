@@ -39,7 +39,7 @@ const IncidentSchema = new mongoose.Schema({
         trim: true,       
     },
   
-    update: [String]
+    update:[{role: String, date: Date,message:String}]
         
 })
 

@@ -10,7 +10,13 @@ const localFetch=(itemName)=>{
    return JSON.parse(data)
 }
 
+const localRemove=()=>{
+
+    sessionStorage.clear();
+}
+
 export {
     localSave, 
-    localFetch
+    localFetch,
+    localRemove
 }

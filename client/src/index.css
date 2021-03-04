@@ -7,7 +7,7 @@
 }
 
 .left-bar{
-    background-image: url("./homemeg.svg");
+    background-image: url("./images/homemeg.svg");
     background-position: center;
     background-repeat:no-repeat;
     background-size:contain;
@@ -36,4 +36,12 @@
     stroke: #2196f3;
     transform:scale(1.1);
    
+    }
+
+    .maint{
+        background-image: url("./images/undraw_under_construction_46pa.svg");
+        background-position: center;
+        background-repeat:no-repeat;
+        
+        overflow: hidden;
     }

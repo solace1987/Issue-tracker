@@ -16,7 +16,45 @@ function MainBar(props){
                 </div>
         )
     }
+    else if(props.title==='Maintenance'){
+        return(
 
+            <div className='flex flex-col w-10/12 overflow-y-auto h-12/12 maint'>
+                   <div className='w-12/12  h-full flex justify-center items-center bg-blue-200 bg-opacity-25 '>
+                       <h1 className='text-indigo-400 font-bold text-5xl'>UNDER CONSTRUCTION</h1>
+                   </div>
+                </div>
+        )
+    }
+    else if(props.title==='Request'){
+        return(
+
+            <div className='flex flex-col w-10/12 overflow-y-auto h-12/12 maint'>
+                   <div className='w-12/12  h-full flex justify-center items-center bg-blue-200 bg-opacity-25 '>
+                       <h1 className='text-indigo-400 font-bold text-5xl'>UNDER CONSTRUCTION</h1>
+                   </div>
+                </div>
+        )
+    }
+    else if(props.title==='Notification'){
+        return(
+
+            <div className='flex flex-col w-10/12 overflow-y-auto h-12/12 maint'>
+                   <div className='w-12/12  h-full flex justify-center items-center bg-blue-200 bg-opacity-25 '>
+                       <h1 className='text-indigo-400 font-bold text-5xl'>UNDER CONSTRUCTION</h1>
+                   </div>
+                </div>
+        )
+    }else if(props.title==='Profile'){
+        return(
+
+            <div className='flex flex-col w-10/12 overflow-y-auto h-12/12 maint'>
+                   <div className='w-12/12  h-full flex justify-center items-center bg-blue-200 bg-opacity-25 '>
+                       <h1 className='text-indigo-400 font-bold text-5xl'>UNDER CONSTRUCTION</h1>
+                   </div>
+                </div>
+        )
+    }
     else if(props.title===null){
         return(
         <Welcome name={props.name}/>

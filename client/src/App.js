@@ -5,6 +5,7 @@ import Login from './user/Login'
 import created from './notification/Newacct'
 import Dashboard from './dashbaord/Dashboard'
 import IncidentForm from './incidence/Incident/IncidentForm'
+import DetailPost from './detail/DetailPost'
 import React from 'react'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path="/incident/:incidentId" component={IncidentForm}/>
       <Route path="/dashboard" render={(props)=><Dashboard {...props}/>} />
       <Route path="/incident" component={IncidentForm} />
+      <Route path="/details/:incidentId" component={DetailPost}></Route>
       
     </Switch>
   );

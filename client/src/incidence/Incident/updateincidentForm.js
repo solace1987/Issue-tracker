@@ -89,10 +89,10 @@ function UpdateIncident(){
                     <input placeholder="Resolution" class=" text-sm text-gray-500 max-w-md w-4/5 border rounded-md border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400 "
                         name="resolution" value={values.resolution} onChange={handleChange('resolution')} type="text" />
                     <div className='text-sm text-gray-500 max-w-md w-4/5 border rounded-md border-gray-400 pl-4 py-2 mt-2 focus:ring-2 focus:ring-gray-400'><label for="status">Status of incident</label>
-                    <select className='px-10 mx-6' name="status" id="status" onChange={handleChange('status')}>
+                    <select className='px-10 mx-6' name="status" id="status"  value= '' onChange={handleChange('status')}>
                         <option value=''>Select Status</option>
                         <option value="Open">Open</option>
-                        <option value="Close">Close</option>
+                        <option value="Closed">Closed</option>
                     </select>
                     </div>
 

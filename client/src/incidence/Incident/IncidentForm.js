@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 
 function IncidentForm(props) {
+ 
   let history = useHistory();
   const type = props.location.state.isUpdate;
 
@@ -34,34 +35,34 @@ function IncidentForm(props) {
     const abortController = new AbortController()
     const signal = abortController.signal
 
-    read({incidentId: props.match.params.incidentId}, { t: jwt }, signal).then((data) => {
+    read({ incidentId: props.match.params.incidentId }, { t: jwt }, signal).then((data) => {
       if (data && data.error) {
         setValues({ ...values, error: data.error })
       } else {
         setValues(data)
-      
+
       }
     })
     return function cleanup() {
       abortController.abort()
     }
 
-  },[props.match.params.incidentId])
+  }, [props.match.params.incidentId])
 
 
   const clickSubmit = (e) => {
 
     if (type) {
       e.preventDefault()
-      update({incidentId: props.match.params.incidentId},{t: jwt}, values).then((data) => {
+      update({ incidentId: props.match.params.incidentId }, { t: jwt }, values).then((data) => {
         if (data && data.error) {
-          setValues({...values, error: data.error})
+          setValues({ ...values, error: data.error })
         } else {
           console.log(data)
         }
       })
     }
-    
+
 
     else if (!type) {
 
@@ -90,12 +91,12 @@ function IncidentForm(props) {
           console.log(data)
           history.push({
             pathname: '/dashboard',
-            state:{
-                msg:data
+            state: {
+              msg: data
             }
 
 
-        });
+          });
 
         }
 
@@ -120,7 +121,7 @@ function IncidentForm(props) {
             <select className='px-10 mx-6' name="status" value={values.status} id="status" onChange={handleChange('status')}>
               <option value=''>Select Status</option>
               <option value="Open">Open</option>
-              <option value="Close">Close</option>
+              <option value="Closed">Closed</option>
             </select>
           </div>
 

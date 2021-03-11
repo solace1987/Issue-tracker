@@ -84,9 +84,9 @@ const list = async (req, res) => {
 const query= req.query;
     try {
         
-
         let incident = await Incident.find(query).select('user incident dept resolution issue timeReported role cause status')
-          const numOpen= (incident.filter(inci=>inci.status==='Open')).length;
+         
+           const numOpen= (incident.filter(inci=>inci.status==='Open')).length;
           const numClosed= (incident.filter(inci=>inci.status==='Closed')).length;
           const data={
               incident:incident,

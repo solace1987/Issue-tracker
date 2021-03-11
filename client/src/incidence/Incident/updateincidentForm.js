@@ -17,7 +17,7 @@ function UpdateIncident(){
         email:userData.email,
         dept: userData.department,
         timeReported:Date.now(),
-        status:'',
+        status:'Open',
         cause:'',
           })
     
@@ -96,7 +96,7 @@ function UpdateIncident(){
                     </select>
                     </div>
 
-                    <button onClick={clickSubmit} class=' font-semibold text-white bg-green-500 w-28 h-10 rounded-md mt-6 border-gray-400 focus:ring-2 focus:ring-blue-400 '>Submit</button>
+                    <button onClick={clickUpdate} class=' font-semibold text-white bg-green-500 w-28 h-10 rounded-md mt-6 border-gray-400 focus:ring-2 focus:ring-blue-400 '>Submit</button>
 
                 </form>
 

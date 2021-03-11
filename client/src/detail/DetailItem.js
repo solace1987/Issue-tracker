@@ -1,14 +1,15 @@
-function DetailItem({ role, user }) {
-
+function DetailItem({ role, user, msg, date }) {
+    let newDate = new Date(date)
+    let formattedDate = newDate.toDateString() + "- " + newDate.toLocaleTimeString();
     const main = {
-        main: "flex w-full justify-end",
+        main: "flex w-full justify-end mb-2",
         msgBox: "bg-gray-700 bg-opacity-90 p-4 w-5/12 rounded-l-lg text-white flex flex-col",
         msgHeader: 'flex text-sm justify-between text-gray-400'
     }
 
 
     const sub = {
-        main: "",
+        main: "mb-2",
         msgBox: "bg-blue-600 bg-opacity-80 p-4 w-5/12 rounded-r-lg text-white flex flex-col",
         msgHeader: 'flex text-sm justify-between text-gray-300'
     }
@@ -21,12 +22,12 @@ function DetailItem({ role, user }) {
                 <div className={main.main}>
                     <div className={main.msgBox}>
                         <div className={main.msgHeader}>
-                            <div><p className=''>Mon 25th February, 2021</p></div>
-                            <div><p>Admin</p></div>
+                            <div><p className=''>{formattedDate}</p></div>
+                            <div><p>{role}</p></div>
                         </div>
                         <div>
                             <p>
-                                The main issue we are facing is caused by inefficient access point
+                               {msg}
                             </p>
                         </div>
                     </div>
@@ -39,12 +40,12 @@ function DetailItem({ role, user }) {
                 <div className={sub.main}>
                     <div className={sub.msgBox}>
                         <div className={sub.msgHeader}>
-                            <div><p className=''>Mon 25th February, 2021</p></div>
-                            <div><p>Admin</p></div>
+                            <div><p className=''>{formattedDate}</p></div>
+                            <div><p>{role}</p></div>
                         </div>
                         <div>
                             <p>
-                                The main issue we are facing is caused by inefficient access point
+                                {msg}
                             </p>
                         </div>
                     </div>

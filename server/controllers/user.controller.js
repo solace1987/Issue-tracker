@@ -102,7 +102,31 @@ const list = async (req, res) => {
 
 }
 
+const confirm = async (req, res) => {
+    const query= req.query;
+        try {
+            
+            let user = await User.find(query).select('email')
+                       
+           if(user.length){
+               res.json({isFound:true})
+           }
 
+           else{
+            res.json({isFound:false})
+           }
+    
+        } catch (err) {
+    
+            return res.status(400).json({
+    
+                error: errorHandler.getErrorMessage(err)
+    
+            })
+    
+        }
+    
+    }
 
 const update = async (req, res) => {
 
@@ -176,6 +200,7 @@ export default {
 
     remove,
 
-    update
+    update,
+    confirm
 
 }

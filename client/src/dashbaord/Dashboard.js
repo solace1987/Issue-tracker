@@ -24,6 +24,7 @@ function Dashboard() {
                 console.log(data.error)
             } else {
                 setValue({ ...value, data: data })
+                console.log(value)
             }
         })
 

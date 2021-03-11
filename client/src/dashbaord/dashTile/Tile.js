@@ -1,4 +1,5 @@
 function Tile({ total, done, remaining, title }) {
+    
     return (
         <div className='w-full flex items-center  flex-col '>
             <h2 className='text-center text-4xl mb-4 font-semibold p-4 text-gray-500'>{title}</h2>

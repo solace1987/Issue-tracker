@@ -30,7 +30,7 @@ const create = async (incident) => {
 
 
 
-const list = async (signal,query) => {
+const list = async (signal, query) => {
 
     try {
 
@@ -52,7 +52,9 @@ const list = async (signal,query) => {
 
 }
 
-
+const verify= async ()=>{
+    
+}
 
 const read = async (params, credentials, signal) => {
 
@@ -89,7 +91,7 @@ const read = async (params, credentials, signal) => {
 
 
 const update = async (params, credentials, incident) => {
-    
+
     try {
 
         let response = await fetch('http://localhost:3200/api/incidents/' + params.incidentId, {
@@ -105,11 +107,11 @@ const update = async (params, credentials, incident) => {
                 'Authorization': 'Bearer ' + credentials.t
 
             },
-                
+
             body: JSON.stringify(incident)
 
         })
-     
+
         return await response.json()
 
     } catch (err) {

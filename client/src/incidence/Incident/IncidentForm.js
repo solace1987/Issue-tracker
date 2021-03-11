@@ -73,7 +73,7 @@ function IncidentForm(props) {
         issue: values.issue || undefined,
         resolution: values.resolution || undefined,
         dept: values.dept || undefined,
-        status: values.status || undefined,
+        status: 'Open',
         cause: values.cause || undefined,
         email: values.email || undefined,
         dept: values.dept || undefined

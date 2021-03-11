@@ -28,7 +28,27 @@ const create = async (user) => {
 
 }
 
+const confirmUser = async (UserEmail,signal) => {
 
+    try {
+
+        let response = await fetch(`http://localhost:3200/api/confirm?email=${UserEmail}`, {
+
+            method: 'GET',
+
+            signal: signal,
+
+        })
+
+        return await response.json()
+
+    } catch (err) {
+
+        console.log(err)
+
+    }
+
+}
 
 const list = async (signal) => {
 
@@ -164,7 +184,8 @@ export {
 
     update,
 
-    remove
+    remove,
+    confirmUser
 
 }
 

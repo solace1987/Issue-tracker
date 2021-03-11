@@ -42,7 +42,7 @@ function Tablerow({ incidents }) {
         return (
 
             <tr className='text-xs' key={incident._id} >
-                <td className="border border-grey-500 px-2">{index}</td>
+                <td className="border border-grey-500 px-2">{index+1}</td>
                 <td className="border border-grey-50 px-2 ">{incident.user}</td>
                 <td className="border px-2">{incident.dept}</td>
                 <td className="border border-grey-500 px-2 w-1/5">{incident.issue}</td>

@@ -1,7 +1,9 @@
 import { localFetch } from './../../helper/localStorage';
 import { useHistory } from 'react-router-dom';
 function Tablerow({ incidents }) {
+    
     const userRole = localFetch('user').role;
+    
     let history = useHistory();
         let rowEdit = (incidentId) => {
         if (userRole === 'Admin') {
@@ -22,6 +24,7 @@ function Tablerow({ incidents }) {
         });
     }
 
+
     const onDetail = (id) => {
 
         history.push({
@@ -31,7 +34,8 @@ function Tablerow({ incidents }) {
             }
         });
     }
-    let rowData = (incident, index) => {
+    
+    const rowData = (incident, index) => {
 
         let date = new Date(incident.timeReported)
         let formattedDate = date.toDateString() + "- " + date.toLocaleTimeString();

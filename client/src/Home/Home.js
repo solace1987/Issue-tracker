@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { create } from './../incidence/api.incident'
 import { confirmUser } from './../user/api.user'
+import MiniNofify from './../notification/miniNotifyer'
 
 function Home() {
+
 
   const [values, setValues] = useState({
     user: '',
@@ -11,8 +13,12 @@ function Home() {
     dept: '',
     status: 'Open',
     email: '',
+    msg:'',
+    colorType:'',
+    isDone:false
 
   })
+
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value })
@@ -21,54 +27,71 @@ function Home() {
 
 
   const clickSubmit = (e) => {
-    const abortController = new AbortController()
-    const signal = abortController.signal
-    e.preventDefault()
-    const incident = {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    e.preventDefault();
 
+    const incident = {
       user: values.user || undefined,
       issue: values.issue || undefined,
       dept: values.dept || undefined,
       email: values.email || undefined,
-      status:"Open"
+      status: "Open"
 
-    }
+    };
 
     confirmUser(incident.email, signal).then(data => {
-      
-      if (data.error) {
+      if(data===undefined){
+        setValues({ ...values, 
+          isDone:true, 
+          msg:"OOPS! Something's wrong, check your network and confirm info entry",
+          colorType:'warning' })
+      }
+      if (data.error && data ) {
         setValues({ ...values, error: data.error })
-
       }
       else {
-
         if (data.isFound) {
-
           create(incident).then((data) => {
-            if (data.error) {
-            setValues({ ...values, error: data.error })
-            } 
+            if(data===undefined){
+              setValues({ ...values, 
+                isDone:true, 
+                msg:'Not connecting, check your network connection,',
+                colorType:'warning' })
+                
+            }
+            if (data.error && data) {
+              setValues({ ...values, error: data.error,
+                isDone:true, 
+                msg:'Your issue was not submitted, contact Admin',
+                colorType:'warning' })
+            }
             else {
-              setValues({})
+              setValues({ ...values, 
+                isDone:true, 
+                msg:'Your issue has been successfully submitted',
+                colorType:'info' })
+            }
             }
 
-          })
-        
+          )
+
         }
 
-        else{
-          console.log("user does not exit")
+        else {
           
+          setValues({ ...values, 
+            isDone:true, 
+            msg:'Your are not a registered User, please Register',
+            colorType:'warning' })
         }
 
       }
 
     })
-
-
-
-
   }
+
+
   return (
 
     <div className=" issue-login flex">
@@ -79,14 +102,17 @@ function Home() {
         </div>
       </div>
       <div className='form-area bg-blue-400 className="text-right" p-4 pt-10 w-4/5 h-full'>
-        {/* <div className="bg-blue-400 p-4  mx-auto"> */}
+
         <div className="font-semibold font-sans text-white text-right w-full">
           <Link className="p2" to="/register">Register</Link>
           <Link className="p2 pl-4" to="/login">Login</Link>
 
 
         </div>
-        <div className="mt-24 text-lg font-semibold  font-sans text-white text-center w-full">
+        <div className="mt-20 text-lg font-semibold  font-sans text-white text-center w-full">
+          <div>
+            <MiniNofify msg={values.msg} colorType={values.colorType} isDone={values.isDone} />
+          </div>
           <h3>Quick Report</h3>
         </div>
         <form className="font-sans flex flex-col items-center mt-2 w-full ">
@@ -98,7 +124,7 @@ function Home() {
           <input value="Submit" onClick={clickSubmit} className=' font-semibold text-white bg-green-500 w-28 h-10 rounded-md mt-6 border-gray-400 focus:ring-2 focus:ring-blue-400 ' type="submit" />
 
         </form>
-        {/* </div> */}
+        
       </div>
     </div>
 

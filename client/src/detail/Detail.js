@@ -4,7 +4,10 @@ import { localFetch } from '../helper/localStorage'
 function Details({chatMsg}) {
    
     const userData = localFetch('user')
+    console.log(userData.role)
+    
        const DetailItems= (chatMsg.map(chat=>{
+        console.log(chat.role)
         return(
             <DetailItem user={userData.role} role={chat.role} msg={chat.message} date={chat.date}/>
         )

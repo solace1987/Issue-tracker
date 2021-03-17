@@ -2,14 +2,19 @@ import { signin } from './../auth/api.auth'
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import {localSave} from './../helper/localStorage'
+import MiniNotify from './../notification/miniNotifyer'
 
 function Login() {
 
   const [values, setValues] = useState({
     password: '',
     email: '',
-    error: ''
+    error: '',
+    msg:'',
+    isDone:false,
+    colorType:''
   })
+
  const [redirect,setRedirect]=useState(null)
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value })
@@ -28,7 +33,9 @@ function Login() {
     
       if (data.error) {
 
-        setValues({ ...values, error: data.error })
+        setValues({ ...values, error: data.error,msg:data.error,
+         isDone:true,
+         colorType:'warning' })
 
 
       } else {
@@ -56,7 +63,7 @@ function Login() {
   else{
     return (
       <div  className="report issue-login bg-blue-400 grid grid-cols-1 w-full h-ful">
-          
+          <MiniNotify colorType={values.colorType} msg={values.msg} isDone={values.isDone} />
          <div className=" bg-white border rounded-md place-self-center w-2/5 h-78 pt-8 .shadow-lg">
          <form className="font-sans flex flex-col items-center mt-2 pb-8 ">
               

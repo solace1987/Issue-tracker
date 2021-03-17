@@ -3,10 +3,10 @@
 
 function MiniNofify({ msg, colorType, isDone }) {
     let color = '';
-
     if (colorType === 'warning') {
         color = 'h-10 mb-4 bg-red-300  rounded-sm'
     }
+
     else if (colorType === 'info') {
         color = 'h-10 mb-4 bg-green-300  rounded-sm'
     }
@@ -23,7 +23,6 @@ function MiniNofify({ msg, colorType, isDone }) {
     else{
             return(
                 <div>
-
                 </div>
             )
 

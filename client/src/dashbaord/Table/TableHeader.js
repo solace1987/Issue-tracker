@@ -1,6 +1,6 @@
 function TableHeader({headings}){
     return(
-        <thead>
+        <thead className='bg-blue-200 text-gray-600' >
             <tr>
             {
                 headings.map((heading, index)=>{

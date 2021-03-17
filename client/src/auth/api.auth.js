@@ -25,6 +25,7 @@ const signin = async (user) => {
     } catch (err) {
 
         console.log(err)
+        return({error:"OPPS! something's wrong, check your network or contact Admin"})
 
     }
 

@@ -1,4 +1,4 @@
-import Incident from '../models/incident.model'
+import Request from '../models/request.model'
 
 import extend from 'lodash/extend'
 
@@ -6,17 +6,17 @@ import errorHandler from './../helpers/dbErrorHandler'
 
 
 
-const create = async (req, res) => {
-
-    const incident = new Incident(req.body)
+const create = async (req, res) => 
+{
+    const request = new Request(req.body)
   
     try {
 
-        await incident.save()
+        await request.save()
 
         return res.status(200).json({
 
-            message: "Incident Reported Successfully"
+            message: "Request Reported Successfully"
 
         })
 
@@ -36,25 +36,25 @@ const create = async (req, res) => {
 
 /**
 
- * Load incident and append to req.
+ * Load request and append to req.
 
  */
 
-const incidentByID = async (req, res, next, id) => {
+const requestByID = async (req, res, next, id) => {
     
     try {
         
-        let incident = await Incident.findById(id)
+        let request = await request.findById(id)
 
-        if (!incident)
+        if (!request)
 
             return res.status('400').json({
 
-                error: "Incident not available"
+                error: "request not available"
 
             })
 
-        req.profile = incident
+        req.profile = request
 
         next()
 
@@ -62,7 +62,7 @@ const incidentByID = async (req, res, next, id) => {
 
         return res.status('400').json({
 
-            error: "Could not retrieve Incident"
+            error: "Could not retrieve request"
 
         })
 
@@ -88,12 +88,12 @@ const query= req.query;
         if(query.role==='User')
         {
            
-        let incident = await Incident.find({email:query.email}).select('user incident dept resolution issue timeReported role cause status')
+        let request = await request.find({email:query.email}).select('user request dept resolution issue timeReported role cause status')
          
-           const numOpen= (incident.filter(inci=>inci.status==='Open')).length;
-          const numClosed= (incident.filter(inci=>inci.status==='Closed')).length;
+           const numOpen= (request.filter(inci=>inci.status==='Open')).length;
+          const numClosed= (request.filter(inci=>inci.status==='Closed')).length;
           const data={
-              incident:incident,
+              request:request,
               numClosed:numClosed,
               numOpen:numOpen
           }
@@ -103,12 +103,12 @@ const query= req.query;
 
     else if(query.role==='Admin'){
 
-        let incident = await Incident.find().select('user incident dept resolution issue timeReported role cause status')
+        let request = await request.find().select('user request dept resolution issue timeReported role cause status')
          
-        const numOpen= (incident.filter(inci=>inci.status==='Open')).length;
-       const numClosed= (incident.filter(inci=>inci.status==='Closed')).length;
+        const numOpen= (request.filter(inci=>inci.status==='Open')).length;
+       const numClosed= (request.filter(inci=>inci.status==='Closed')).length;
        const data={
-           incident:incident,
+           request:request,
            numClosed:numClosed,
            numOpen:numOpen
        }
@@ -134,17 +134,17 @@ const update = async (req, res) => {
 
     try {
 
-        let incident = req.profile
+        let request = req.profile
 
-        incident = extend(incident, req.body)
+        request = extend(request, req.body)
 
         
 
-        await incident.save()
+        await request.save()
 
-        incident.timeReported = undefined
+        request.timeReported = undefined
 
-        res.json(incident)
+        res.json(request)
 
     } catch (err) {
 
@@ -164,11 +164,11 @@ const remove = async (req, res) => {
 
     try {
 
-        let incident = req.profile
+        let request = req.profile
 
-        let deletedIncident = await incident.remove()
+        let deletedRequest = await request.remove()
 
-        res.json(deletedIncident)
+        res.json(deletedRequest)
 
     } catch (err) {
 
@@ -188,7 +188,7 @@ export default {
 
     create,
 
-    incidentByID,
+    requestByID,
 
     read,
 

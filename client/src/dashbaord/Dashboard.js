@@ -19,7 +19,7 @@ function Dashboard() {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        list(signal, userData.email).then((data) => {
+        list(signal, userData.email, userData.role).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
             } else {

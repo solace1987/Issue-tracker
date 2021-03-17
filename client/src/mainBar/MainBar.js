@@ -1,5 +1,6 @@
-import Table from './../dashbaord/Table/Usertable'
+import Table from './../dashbaord/Table/Incidenttable'
 import Tile from './../dashbaord/dashTile/Tile'
+import RequestMain from './../request/RequestMain'
 import Welcome from './../welcome/welcome'
 
 function MainBar(props) {
@@ -29,9 +30,9 @@ function MainBar(props) {
     else if (props.title === 'Request') {
         return (
 
-            <div className='flex flex-col w-10/12 overflow-y-auto h-12/12 maint'>
-                <div className='w-12/12  h-full flex justify-center items-center bg-blue-200 bg-opacity-25 '>
-                    <h1 className='text-indigo-400 font-bold text-5xl'>UNDER CONSTRUCTION</h1>
+            <div className='flex flex-col w-10/12 overflow-y-auto h-12/12'>
+                <div className='w-12/12  h-full flex justify-center bg-blue-200 bg-opacity-25 '>
+                    <RequestMain/>
                 </div>
             </div>
         )

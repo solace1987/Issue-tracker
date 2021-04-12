@@ -93,11 +93,11 @@ const query= req.query;
            const numOpen= (incident.filter(inci=>inci.status==='Open')).length;
           const numClosed= (incident.filter(inci=>inci.status==='Closed')).length;
           const data={
-              incident:incident,
+              incident:incident.reverse(),
               numClosed:numClosed,
               numOpen:numOpen
           }
-          
+          console.log(data.incident)
         res.json(data)
     }
 
@@ -108,7 +108,7 @@ const query= req.query;
         const numOpen= (incident.filter(inci=>inci.status==='Open')).length;
        const numClosed= (incident.filter(inci=>inci.status==='Closed')).length;
        const data={
-           incident:incident,
+           incident:incident.reverse(),
            numClosed:numClosed,
            numOpen:numOpen
        }

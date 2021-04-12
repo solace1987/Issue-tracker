@@ -7,6 +7,7 @@ import helmet from 'helmet'
 import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
 import incidentRoutes from './routes/incident.routes'
+import requestRoutes from './routes/request.routes'
 
 const app = express()
 app.use(bodyParser.json())
@@ -22,7 +23,8 @@ app.use(cors( {
 
 app.use('/', userRoutes)
 app.use('/', authRoutes)
-app.use('/',incidentRoutes)
+app.use('/', incidentRoutes)
+app.use('/', requestRoutes)
 
 
 

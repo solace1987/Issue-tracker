@@ -2,7 +2,7 @@ const signin = async (user) => {
 
     try {
 
-        let response = await fetch('http://localhost:3200/auth/signin', {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/auth/signin', {
 
             method: 'POST',
 

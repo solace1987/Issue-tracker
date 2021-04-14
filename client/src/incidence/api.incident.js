@@ -2,7 +2,7 @@ const create = async (incident) => {
 
     try {
 
-        let response = await fetch('http://localhost:3200/api/incidents/', {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/api/incidents/', {
 
             method: 'POST',
 
@@ -34,7 +34,7 @@ const list = async (signal, email,role) => {
 
     try {
 
-        let response = await fetch(`http://localhost:3200/api/incidents?email=${email}&role=${role}`, {
+        let response = await fetch(`https://gppissuetracker-backend.herokuapp.com/api/incidents?email=${email}&role=${role}`, {
 
             method: 'GET',
 
@@ -60,7 +60,7 @@ const read = async (params, credentials, signal) => {
 
     try {
 
-        let response = await fetch('http://localhost:3200/api/incidents/' + params.incidentId, {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/api/incidents/' + params.incidentId, {
 
             method: 'GET',
 
@@ -94,7 +94,7 @@ const update = async (params, credentials, incident) => {
 
     try {
 
-        let response = await fetch('http://localhost:3200/api/incidents/' + params.incidentId, {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/api/incidents/' + params.incidentId, {
 
             method: 'PUT',
 
@@ -128,7 +128,7 @@ const remove = async (params, credentials) => {
 
     try {
 
-        let response = await fetch('/api/incident/' + params.userId, {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/api/incident/' + params.userId, {
 
             method: 'DELETE',
 

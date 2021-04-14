@@ -16,6 +16,7 @@ app.use(cookieParser())
 app.use(compress())
 app.use(helmet())
 app.use(cors( {
+    origin:'https://gppictissuetracker.netlify.app',
     optionsSuccessStatus: 200,
     credentials : true
     }))
@@ -26,7 +27,4 @@ app.use('/', incidentRoutes)
 app.use('/', requestRoutes)
 
 
-
-
-//
 export default app

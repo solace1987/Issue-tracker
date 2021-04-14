@@ -2,7 +2,7 @@ const create = async (user) => {
     
     try {
 
-        let response = await fetch('http://localhost:3200/api/users/', {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/api/users/', {
 
             method: 'POST',
 
@@ -32,7 +32,7 @@ const confirmUser = async (UserEmail,signal) => {
 
     try {
 
-        let response = await fetch(`http://localhost:3200/api/confirm?email=${UserEmail}`, {
+        let response = await fetch(`https://gppissuetracker-backend.herokuapp.com/api/confirm?email=${UserEmail}`, {
 
             method: 'GET',
 
@@ -112,7 +112,7 @@ const update = async (params, credentials, user) => {
 
     try {
 
-        let response = await fetch('/api/users/' + params.userId, {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/api/users/' + params.userId, {
 
             method: 'PUT',
 
@@ -146,7 +146,7 @@ const remove = async (params, credentials) => {
 
     try {
 
-        let response = await fetch('/api/users/' + params.userId, {
+        let response = await fetch('https://gppissuetracker-backend.herokuapp.com/api/users/' + params.userId, {
 
             method: 'DELETE',
 

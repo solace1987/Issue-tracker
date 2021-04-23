@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
     },
     department: {
       type: String,
-      required: "Specify your role"
+      required: "Specify your department"
   },
     role: String,
 

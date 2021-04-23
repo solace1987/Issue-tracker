@@ -8,7 +8,6 @@ const RequestSchema = new mongoose.Schema({
     dept: {
         type: String,
         trim: true,
-      
     },
     email:{
         type:String,
@@ -33,6 +32,14 @@ const RequestSchema = new mongoose.Schema({
     status: {
         type: String,
         trim: true,       
+    },
+    remark: {
+        type: String,
+        trim: true,       
+    },
+    cartegory: {
+        type:String,
+        trim:true
     }
         
 })

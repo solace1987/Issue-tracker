@@ -14,7 +14,7 @@ const signin = async (user) => {
 
             },
             
-            credentials: 'include',
+            
 
             body: JSON.stringify(user)
 

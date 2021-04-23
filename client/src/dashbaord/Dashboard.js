@@ -55,7 +55,7 @@ function Dashboard() {
 
     return (
 
-        <div className="h-screen overflow-auto flex items-center justify-center" style={{ background: "#rgb(237, 242, 247)" }}>
+        <div className="h-screen overflow-hidden flex items-center justify-center" style={{ background: "#rgb(237, 242, 247)" }}>
             <div className="flex flex-wrap  w-full h-screen">
                 <div className="w-2/12 bg-white rounded p-3 shadow-lg">
                     <div className="flex items-center space-x-4 p-2 mb-10">

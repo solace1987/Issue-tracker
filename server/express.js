@@ -17,8 +17,7 @@ app.use(compress())
 app.use(helmet())
 app.use(cors(
     {
-        origin:'localhost:3000',
-        //'https://gppictissuetracker.netlify.app',
+        origin:'https://gppictissuetracker.netlify.app',
         optionsSuccessStatus: 200,
         credentials : true
         }

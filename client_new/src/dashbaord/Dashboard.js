@@ -1,52 +1,26 @@
 
 import Sidebar from './Sidebar';
-import { list } from '../incidence/api.incident'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { localFetch } from './../helper/localStorage'
-import MainBar from './../mainBar/MainBar'
+import { localFetch } from './../helper/localStorage';
+import MainBar from './../mainBar/MainBar';
 
 
 function Dashboard() {
 
     const userData = localFetch("user");
 
-    const [value, setValue] = useState({ data: [], title: null })
+    const [title, setTitle] = useState( null)
 
     let history = useHistory();
 
-    useEffect(() => {
-        const abortController = new AbortController()
-        const signal = abortController.signal
-
-        list(signal, userData.email, userData.role).then((data) => {
-            if (data && data.error) {
-                console.log(data.error)
-            } else {
-                setValue({ ...value, data: data })
-                console.log(value)
-            }
-        })
-
-        return function cleanup() {
-            abortController.abort()
-        }
-    }, [])
-
-    const createIncident = () => {
-        history.push({
-            pathname: '/incident',
-            state: {
-                isUpdate: false
-            }
+   
 
 
-        });
-    }
 
     let onAction = (ed) => {
 
-        setValue({ ...value, title: ed })
+        setTitle(ed)
 
 
     }
@@ -55,7 +29,7 @@ function Dashboard() {
 
     return (
 
-        <div className="h-screen  flex items-center justify-center" style={{ background: "#rgb(237, 242, 247)" }}>
+        <div className="h-screen overflow-auto flex items-center justify-center" style={{ background: "#rgb(237, 242, 247)" }}>
             <div className="flex flex-wrap  w-full h-screen">
                 <div className="w-2/12 bg-white rounded p-3 shadow-lg">
                     <div className="flex items-center space-x-4 p-2 mb-10">
@@ -72,7 +46,7 @@ function Dashboard() {
                     <Sidebar onAction={onAction} />
                 </div>
 
-                <MainBar title={value.title} total={value.data.numClosed + value.data.numOpen} remaining={value.data.numOpen} done={value.data.numClosed} data={value.data.incident} createIncident={createIncident} name={userData.name} />
+                 <MainBar title={title}/> 
 
             </div>
         </div>

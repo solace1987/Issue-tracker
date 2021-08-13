@@ -14,10 +14,7 @@ const UserSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/, 'Please fill a valid email address'],
         required: 'Email is required'
     },
-    department: {
-        type: String,
-        required: "Specify your department"
-    },
+   
     department: {
       type: String,
       required: "Specify your department"
@@ -41,7 +38,7 @@ UserSchema
   .virtual('password')
 
   .set(function(password) {
-
+console.log(password)
     this._password = password
 
     this.salt = this.makeSalt()

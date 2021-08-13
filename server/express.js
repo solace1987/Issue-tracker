@@ -15,14 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(compress())
 app.use(helmet())
-app.use(cors(
-    {
-        origin:'localhost:3000',
-        //'https://gppictissuetracker.netlify.app',
-        optionsSuccessStatus: 200,
-        credentials : true
-        }
-))
+app.use(cors())
 
 app.use('/', userRoutes)
 app.use('/', authRoutes)

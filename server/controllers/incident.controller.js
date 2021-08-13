@@ -102,8 +102,10 @@ const query= req.query;
     }
 
     else if(query.role==='Admin'){
-
-        let incident = await Incident.find().select('user incident dept resolution issue timeReported role cause status')
+       
+        let incident = await Incident
+        .find(/*{"timeReported":{$gte: '2021-04-26T15:17:44.008+00:00', $lte:'2021-05-17T12:26:21.196+00:00'} }*/)
+        .select('user incident dept resolution issue timeReported role cause status')
          
         const numOpen= (incident.filter(inci=>inci.status==='Open')).length;
        const numClosed= (incident.filter(inci=>inci.status==='Closed')).length;
@@ -112,7 +114,7 @@ const query= req.query;
            numClosed:numClosed,
            numOpen:numOpen
        }
-      
+     
      res.json(data)
 
     }

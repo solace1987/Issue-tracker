@@ -15,7 +15,17 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(compress())
 app.use(helmet())
+<<<<<<< HEAD
 app.use(cors())
+=======
+app.use(cors(
+    {
+        origin:'https://gppictissuetracker.netlify.app',
+        optionsSuccessStatus: 200,
+        credentials : true
+        }
+))
+>>>>>>> c2609d4168d2efe0af4f876531e8f362855eae8d
 
 app.use('/', userRoutes)
 app.use('/', authRoutes)
